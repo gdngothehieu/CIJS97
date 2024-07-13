@@ -1,0 +1,26 @@
+
+.column {
+    display: 'inline-block';
+    width: "25%";
+}
+
+.class-column {
+    display: 'inline-block';
+}
+  
+.title-style {
+    padding-left: 15px;
+}
+
+  
+.id-style {
+    color: "grey";
+    padding-left: "15px";
+}
+.imaging  {
+    width: "100%";
+    height: "100%";
+    background-color: "#DCDCDC";
+    object-fit: "cover";
+    border-radius: "10px";
+};
