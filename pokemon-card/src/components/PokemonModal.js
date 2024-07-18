@@ -1,21 +1,13 @@
-import React, { useState } from 'react'
-import styles from './PokemonCard.module.css'
-import PokemonModal from './PokemonModal'
+'use client'
+
+import { useState } from 'react'
 import { Dialog, DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/react'
 import { ExclamationTriangleIcon } from '@heroicons/react/24/outline'
-export const PokemonCard = ({img,title,classes,id}) => {
-  const [openModal, setOpenModal] = useState(false)
-  const clickPokemon = (title) => {
-    setOpenModal(true);
-  }
+
+export default function PokemonModal(openModal,setOpenModal, ... props) {
+  // const [open, setOpen] = useState(openModal)
+
   return (
-
-
-    <div
-    onClick={()=>{clickPokemon(title)}}
-
-    className="container-content">
-        
     <Dialog open={openModal} onClose={setOpenModal} className="relative z-10">
       <DialogBackdrop
         transition
@@ -35,65 +27,37 @@ export const PokemonCard = ({img,title,classes,id}) => {
                 </div>
                 <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
                   <DialogTitle as="h3" className="text-base font-semibold leading-6 text-gray-900">
-                    {title}
+                    Deactivate account
                   </DialogTitle>
                   <div className="mt-2">
                     <p className="text-sm text-gray-500">
-                      <img src={img} />
+                      Are you sure you want to deactivate your account? All of your data will be permanently removed.
+                      This action cannot be undone.
                     </p>
-                    {classes.map(classz => {
-                        return <p className="text-sm text-gray-500" style={{color: classz.color}}>
-                        {classz.title}
-
-                        </p>
-                    
-                  })}
                   </div>
                 </div>
               </div>
             </div>
             <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
-          
+              <button
+                type="button"
+                onClick={() => setOpenModal(false)}
+                className="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
+              >
+                Deactivate
+              </button>
               <button
                 type="button"
                 data-autofocus
                 onClick={() => setOpenModal(false)}
                 className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
               >
-                Tắt đi
+                Cancel
               </button>
             </div>
           </DialogPanel>
         </div>
       </div>
     </Dialog>
-        <img className="image"
-        src={img}
-        />
-        <h3 className="id-style">#{id}</h3>
-        <h1 className="title-style">{title}</h1>
-        <div>
-        {
-        classes.map((cl, index)=>{
-          const pokemonClassStyle= {
-            background: cl.color,
-             width:'100px', 
-             textAlign: 'center',
-             padding: '5px',
-             marginLeft: "10%",
-             borderRadius: "15%"
-        }
-        const pokemonColumn = {
-          
-          marginLeft: "5px",
-          marginRight: "5px",
-          display: 'inline-block',
-
-        }
-          return <div keys={index} style={pokemonColumn}><p style={pokemonClassStyle}>{cl.title}</p></div>
-        })
-      }
-        </div>
-    </div>
   )
 }

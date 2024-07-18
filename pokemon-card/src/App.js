@@ -1,9 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
 import { PokemonCard } from './components/PokemonCard';
+import { useState } from 'react';
 
 function App() {
-  const cardList = [
+  const [cardList, setCardList] = useState([
     {
       id: "0001",
       title: "Bulbasaur",
@@ -155,10 +156,11 @@ function App() {
     ],
       img: "./pokemon-images/012.png"
     },
-  ]
+  ]);
 
   return (
     <div className="container">
+       
       {
         cardList.map((card, index)=>{
           return <PokemonCard 
