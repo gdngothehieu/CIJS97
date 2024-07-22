@@ -5,7 +5,7 @@ import { Dialog, DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/re
 import { ExclamationTriangleIcon } from '@heroicons/react/24/outline'
 
 export default function PokemonModal(openModal,setOpenModal, ... props) {
-  // const [open, setOpen] = useState(openModal)
+  const [open, setOpen] = useState(openModal)
 
   return (
     <Dialog open={openModal} onClose={setOpenModal} className="relative z-10">
